@@ -1,0 +1,24 @@
+<html>
+<head>
+</head>
+<body>
+<nav style="display: flex; align-items: center; gap: 16px; padding: 12px; background: #f0f0f0;">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html">Contact Us</a>
+  <form id="searchForm" style="display: flex; align-items: center; gap: 8px; margin-left: auto;">
+    <input type="text" id="searchInput" placeholder="Search recommendations" />
+    <button type="submit">Search</button>
+    <button type="button" id="resetBtn">Reset</button>
+  </form>
+</nav>
+
+<script>
+
+document.getElementById('resetBtn').onclick = function() {
+  document.getElementById('searchInput').value = '';
+  
+};
+</script>
+</body>
+</html>
