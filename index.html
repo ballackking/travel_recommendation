@@ -107,6 +107,12 @@
     .intro-section button:hover {
       background: #005f5f;
     }
+    #recommendationResults {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
     @media (max-width: 700px) {
       .intro-section {
         margin: 100px 10px 0 10px;
@@ -116,6 +122,23 @@
         left: 8px;
         top: 80px;
       }
+    }
+    .main-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 32px;
+    }
+    .intro-section {
+      flex: 1;
+      min-width: 320px;
+    }
+    #recommendationResults {
+      flex: 1;
+      margin-left: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
     }
   </style>
 </head>
@@ -127,7 +150,7 @@
     <a href="contact.html">Contact Us</a>
     <form id="searchForm">
       <input type="text" id="searchInput" placeholder="Enter a destination or keyword" />
-      <button type="submit">Search</button>
+      <button type="submit" id="searchBtn">Search</button>
       <button type="button" id="resetBtn">Clear</button>
     </form>
   </nav>
@@ -137,18 +160,25 @@
     <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
     <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
   </div>
-  <div class="intro-section">
-    <h1>EXPLORE<br>DREAM<br>DESTINATION</h1>
-    <p>
-      It encourages exploration of unfamiliar territories, embracing diverse cultures and landscapes, while pursuing the desired destination that captivates the heart and ignites a sense of wonder.
-    </p>
-    <button>BOOK NOW</button>
+  <div class="main-content">
+    <div class="intro-section">
+      <h1>EXPLORE<br>DREAM<br>DESTINATION</h1>
+      <p>
+        It encourages exploration of unfamiliar territories, embracing diverse cultures and landscapes, while pursuing the desired destination that captivates the heart and ignites a sense of wonder.
+      </p>
+      <button>BOOK NOW</button>
+    </div>
+    <div id="recommendationResults">
+      <!-- Recommendations will appear here -->
+    </div>
   </div>
+  <script src="travel_recommendation.js"></script>
   <script>
     document.getElementById('resetBtn').onclick = function() {
       document.getElementById('searchInput').value = '';
-      // Add logic to clear search results if needed
+      
     };
+    
   </script>
 </body>
 </html>

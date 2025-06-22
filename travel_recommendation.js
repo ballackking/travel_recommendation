@@ -1,15 +1,3 @@
-// Fetch travel recommendations and log the data
-let recommendations = [];
-fetch('travel_recommendation_api.json')
-  .then(response => response.json())
-  .then(data => {
-    recommendations = data;
-    console.log('Travel Recommendations:', data);
-  })
-  .catch(error => {
-    console.error('Error fetching recommendations:', error);
-  });
-
 // Helper to get current time in a given time zone
 function getCurrentTimeInTimeZone(timeZone) {
   if (!timeZone) return '';
@@ -20,6 +8,7 @@ function getCurrentTimeInTimeZone(timeZone) {
 // Helper to render recommendations
 function renderRecommendations(results) {
   let container = document.getElementById('recommendationResults');
+  console.log('Rendering recommendations:', results);
   if (!container) {
     container = document.createElement('div');
     container.id = 'recommendationResults';
@@ -98,33 +87,43 @@ function renderRecommendations(results) {
   });
 }
 
+// Fetch recommendations once and store globally
+let recommendations = [];
+fetch('./travel_recommendation_api.json')
+  .then(response => response.json())
+  .then(data => {
+    recommendations = data;
+    console.log('Travel Recommendations:', recommendations);
+  })
+  .catch(error => {
+    console.error('Error fetching recommendations:', error);
+  });
+
 // Search functionality for navbar
 const searchForm = document.getElementById('searchForm');
 if (searchForm) {
   searchForm.addEventListener('submit', function(event) {
     event.preventDefault();
+
     const input = document.getElementById('searchInput');
     if (!input) return;
     const keyword = input.value.trim().toLowerCase();
     if (!keyword) return;
-    // Accept variations: beach, beaches, BEACH, etc.
-    const results = recommendations.filter(item => {
-      const name = item.name ? item.name.toLowerCase() : '';
-      const desc = item.description ? item.description.toLowerCase() : '';
-      // Accept plural/singular and case-insensitive
-      if (keyword === 'beach' || keyword === 'beaches') {
-        return name.includes('beach') || desc.includes('beach');
-      }
-      if (keyword === 'temple' || keyword === 'temples') {
-        return name.includes('temple') || desc.includes('temple');
-      }
-      // Accept country names
-      if (item.country && item.country.toLowerCase().includes(keyword)) {
-        return true;
-      }
-      // General keyword match
-      return name.includes(keyword) || desc.includes(keyword);
-    });
+    
+    let results = [];
+    let allPlaces = recommendations.countries.concat(
+      recommendations.beaches,
+      recommendations.temples,
+    );
+
+    if (keyword === 'beach' || keyword === 'beaches') {
+      results = recommendations.beaches;
+      
+    } else if (keyword === 'temple' || keyword === 'temples') {
+      results = recommendations.temples;
+    } else if (keyword === 'country' || keyword === 'countries') {
+      results = recommendations.countries;
+    }
     renderRecommendations(results);
   });
 }
