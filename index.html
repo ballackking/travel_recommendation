@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TravelBloom - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: url('your-background-image.jpg') no-repeat center center/cover;
+      min-height: 100vh;
+      color: #fff;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 32px;
+      padding: 18px 40px;
+      background: rgba(20, 30, 40, 0.95);
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1em;
+      margin-right: 16px;
+    }
+    nav form {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    nav input[type="text"] {
+      padding: 8px 14px;
+      border-radius: 20px;
+      border: none;
+      width: 240px;
+      font-size: 1em;
+    }
+    nav button {
+      padding: 8px 18px;
+      border-radius: 20px;
+      border: none;
+      background: #008080;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      margin-left: 4px;
+      transition: background 0.2s;
+    }
+    nav button[type="button"] {
+      background: #fff;
+      color: #008080;
+      border: 1px solid #008080;
+    }
+    .social-bar {
+      position: fixed;
+      top: 120px;
+      left: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      z-index: 10;
+    }
+    .social-bar a {
+      color: #fff;
+      font-size: 1.7em;
+      transition: color 0.2s;
+      text-shadow: 0 2px 8px #0008;
+    }
+    .social-bar a:hover {
+      color: #00bcd4;
+    }
+    .intro-section {
+      max-width: 600px;
+      margin: 140px 0 0 120px;
+      background: rgba(0,0,0,0.35);
+      padding: 40px 36px 36px 36px;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px #0004;
+    }
+    .intro-section h1 {
+      font-size: 3em;
+      margin-bottom: 0.2em;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+    .intro-section p {
+      font-size: 1.2em;
+      margin-bottom: 1.5em;
+      line-height: 1.6;
+    }
+    .intro-section button {
+      padding: 12px 32px;
+      border-radius: 24px;
+      border: none;
+      background: #008080;
+      color: #fff;
+      font-size: 1.1em;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .intro-section button:hover {
+      background: #005f5f;
+    }
+    @media (max-width: 700px) {
+      .intro-section {
+        margin: 100px 10px 0 10px;
+        padding: 24px 12px;
+      }
+      .social-bar {
+        left: 8px;
+        top: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html"><strong>TravelBloom</strong></a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <form id="searchForm">
+      <input type="text" id="searchInput" placeholder="Enter a destination or keyword" />
+      <button type="submit">Search</button>
+      <button type="button" id="resetBtn">Clear</button>
+    </form>
+  </nav>
+  <div class="social-bar">
+    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+  </div>
+  <div class="intro-section">
+    <h1>EXPLORE<br>DREAM<br>DESTINATION</h1>
+    <p>
+      It encourages exploration of unfamiliar territories, embracing diverse cultures and landscapes, while pursuing the desired destination that captivates the heart and ignites a sense of wonder.
+    </p>
+    <button>BOOK NOW</button>
+  </div>
+  <script>
+    document.getElementById('resetBtn').onclick = function() {
+      document.getElementById('searchInput').value = '';
+      // Add logic to clear search results if needed
+    };
+  </script>
+</body>
+</html>
